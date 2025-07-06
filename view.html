@@ -1,12 +1,10 @@
 <!doctype html>
-<html lang="en">
+<html lang="id">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="icon" href="https://808.beritanasional.eu.org/favicon.ico" type="image/x-icon" />
-
   <title>Score808 Stream Viewer</title>
-
   <style>
     * {
       box-sizing: border-box;
@@ -28,23 +26,12 @@
       background: #1e293b;
       display: flex;
       align-items: center;
+      justify-content: flex-end;
       padding: 0 10px;
       z-index: 9999;
     }
 
-    .demologo {
-      color: #fff;
-      text-decoration: none;
-      font-size: 16px;
-      font-weight: bold;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding-left: 12px;
-    }
-
     .closebutton {
-      margin-left: auto;
       background: transparent;
       border: none;
       color: #fff;
@@ -61,11 +48,33 @@
       border: none;
     }
 
-    @media (max-width: 600px) {
-      .demologo {
-        font-size: 14px;
-      }
+    .loader {
+      position: fixed;
+      top: 55px;
+      left: 0;
+      width: 100%;
+      height: calc(100% - 55px);
+      background: #f8fafc;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9998;
+    }
 
+    .spinner {
+      width: 50px;
+      height: 50px;
+      border: 5px solid #cbd5e1;
+      border-top: 5px solid #0ea5e9;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    @media (max-width: 600px) {
       .closebutton {
         font-size: 24px;
       }
@@ -78,71 +87,90 @@
   </style>
 </head>
 <body>
-
   <div id="tab-demo">
-    <div class="demologo">www.score808.web.id</div>
-<button class="closebutton" onclick="hideHeader()">×</button>
+    <button class="closebutton" onclick="hideHeader()">×</button>
   </div>
+  <div class="loader" id="loader">
+    <div class="spinner"></div>
+  </div>
+  <iframe id="view" loading="lazy" allowfullscreen onload="hideLoader()"></iframe>
+  <script>
+    function getQueryVariable(variable) {
+      var query = window.location.search.substring(1);
+      var vars = query.split("@");
+      for (var i = 0; i < vars.length; i++) {
+        var pair = vars[i].split("+");
+        if (pair[0] == variable) {
+          return pair[1];
+        }
+      }
+      return false;
+    }
 
-  <iframe id="view" loading="lazy" allowfullscreen></iframe>
-
- <div id='histats_counter'></div>
- <script>
-  function getQueryVariable(variable) {
-    var query = window.location.search.substring(1);
-    var vars = query.split("@");
-    for (var i = 0; i < vars.length; i++) {
-      var pair = vars[i].split("+");
-      if (pair[0] == variable) {
-        return pair[1];
+    function base64Decode(str) {
+      try {
+        return decodeURIComponent(escape(atob(str)));
+      } catch (e) {
+        return null;
       }
     }
-    return false;
-  }
 
-  function base64Decode(str) {
-    try {
-      return decodeURIComponent(escape(atob(str)));
-    } catch (e) {
-      return null;
+    function hideHeader() {
+      const header = document.getElementById('tab-demo');
+      const iframe = document.getElementById('view');
+      header.style.display = 'none';
+      iframe.style.top = '0';
+      iframe.style.height = '100%';
     }
-  }
 
-  function hideHeader() {
-    const header = document.getElementById('tab-demo');
-    const iframe = document.getElementById('view');
-    header.style.display = 'none';
-    iframe.style.top = '0';
-    iframe.style.height = '100%';
-  }
+    function hideLoader() {
+      document.getElementById('loader').style.display = 'none';
+    }
 
-  window.onload = function () {
-    var encodedUrl = getQueryVariable("url");
-    if (encodedUrl) {
-      var url = base64Decode(encodedUrl);
-      if (url) {
-        document.getElementById('view').src = url;
+    window.onload = function () {
+      var encodedUrl = getQueryVariable("url");
+      if (encodedUrl) {
+        var url = base64Decode(encodedUrl);
+        if (url) {
+          document.getElementById('view').src = url;
+        } else {
+          alert("Gagal decode URL streaming.");
+        }
       } else {
-        alert("Gagal decode URL streaming.");
+        alert("Parameter URL streaming tidak ditemukan.");
       }
-    } else {
-      alert("Parameter URL streaming tidak ditemukan.");
-    }
-  };
-</script>
-
+    };
+  </script>
+<div id='histats_counter'></div>
+  <!-- Histats -->
   <script type="text/javascript">
-//<![CDATA[
- var _Hasync=_Hasync||[];_Hasync.push(['Histats.start','1,4858913,4,601,110,30,00000100']);_Hasync.push(['Histats.fasi','1']);_Hasync.push(['Histats.track_hits','']);var LazyHistatsLoaded=!1;function loadHistatsScript(){if(LazyHistatsLoaded)return;LazyHistatsLoaded=!0;var hs=document.createElement('script');hs.type='text/javascript';hs.async=!0;hs.src='https://s10.histats.com/js15_as.js';var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(hs,s)}
-window.addEventListener('scroll',function(){if((document.documentElement.scrollTop!==0||document.body.scrollTop!==0)&&!LazyHistatsLoaded){loadHistatsScript()}},{passive:!0})
-//]]>
-</script>
+    var _Hasync=_Hasync||[];
+    _Hasync.push(['Histats.start','1,4858913,4,601,110,30,00000100']);
+    _Hasync.push(['Histats.fasi','1']);
+    _Hasync.push(['Histats.track_hits','']);
+    var LazyHistatsLoaded=!1;
+    function loadHistatsScript(){
+      if(LazyHistatsLoaded) return;
+      LazyHistatsLoaded=!0;
+      var hs=document.createElement('script');
+      hs.type='text/javascript';hs.async=!0;
+      hs.src='https://s10.histats.com/js15_as.js';
+      var s=document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(hs,s)
+    }
+    window.addEventListener('scroll',function(){
+      if((document.documentElement.scrollTop!==0||document.body.scrollTop!==0)&&!LazyHistatsLoaded){
+        loadHistatsScript()
+      }
+    },{passive:!0})
+  </script>
 
-<noscript>
-  <a href="/" target="_blank">
-    <img class="lazyload" src="https://sstatic1.histats.com/0.gif?4858913&101" alt="hitstat score808" title="trafick score808" border="0">
-  </a>
-</noscript>  
- <script type='text/javascript' src='https://undoneknit.com/09/be/bc/09bebcf12b7f51beca114c9dffe27673.js'></script>
+  <noscript>
+    <a href="/" target="_blank">
+      <img src="https://sstatic1.histats.com/0.gif?4858913&101" alt="hitstat score808" title="trafick score808" border="0">
+    </a>
+  </noscript>
+
+  <script src='https://undoneknit.com/09/be/bc/09bebcf12b7f51beca114c9dffe27673.js'></script>
 </body>
 </html>
