@@ -136,7 +136,10 @@ position: fixed;
         if (url) {
           const iframe = document.getElementById('view');
           iframe.src = url;
-          iframe.onload = hideLoader;
+          iframe.onload = function () {
+          hideLoader();
+          loadAds(); // ⬅️ panggil script iklan setelah iframe aktif
+        };
         } else {
           alert("Gagal decode URL streaming.");
           hideLoader();
@@ -144,7 +147,6 @@ position: fixed;
       } else {
         alert("Parameter URL streaming tidak ditemukan.");
         hideLoader();
-         loadAds();
       }
     };
   </script>
