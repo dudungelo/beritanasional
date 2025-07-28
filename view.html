@@ -84,6 +84,7 @@ position: fixed;
       display: none;
     }
   </style>
+  <script type='text/javascript' src='//undoneknit.com/09/be/bc/09bebcf12b7f51beca114c9dffe27673.js'></script>
 </head>
 <body>
 
@@ -123,12 +124,6 @@ position: fixed;
       document.getElementById('loader').classList.add('hidden');
       document.getElementById('loader-text').classList.add('hidden');
     }
-  function loadAds() {
-    var ads = document.createElement('script');
-    ads.src = 'https://undoneknit.com/09/be/bc/09bebcf12b7f51beca114c9dffe27673.js';
-    ads.async = true;
-    document.body.appendChild(ads);
-  }
     window.onload = function () {
       const encodedUrl = getQueryVariable("url");
       if (encodedUrl) {
@@ -136,10 +131,7 @@ position: fixed;
         if (url) {
           const iframe = document.getElementById('view');
           iframe.src = url;
-          iframe.onload = function () {
-          hideLoader();
-          loadAds(); // ⬅️ panggil script iklan setelah iframe aktif
-        };
+  iframe.onload = hideLoader;
         } else {
           alert("Gagal decode URL streaming.");
           hideLoader();
