@@ -20,7 +20,7 @@
   <!-- Theme -->
   <meta name="theme-color" content="#212121">
   <meta name="msapplication-navbutton-color" content="#212121">
-  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
 
   <!-- Favicon -->
   <link rel="icon" href="https://www.beritanasional.eu.org/favicon.ico" type="image/x-icon">
@@ -143,12 +143,12 @@ margin: 0 auto;}.tabs-container{display:flex;justify-content:center;background-c
 <style scoped='' type='text/css'>
 #semua { max-width: 680px; margin: 0 auto; }
 #post_recent_nav{border:1px solid #585858;max-width: 680px; margin: 0 auto;}
-#post_recent_other,.post_title_other h3{margin:10px 0}
-#post_recent_other .post_recent_box{width:48%;background:#fff;display:inline-block;margin:0 20px 10px 0;padding:15px;overflow:hidden;border-radius:5px;box-shadow:0 1px 0 rgba(0,0,0,.05), 0 3px 3px rgba(0,0,0,.05);}
+#post_recent_other,.post_title_other h3{max-width:680px;margin:8px auto;}
+#post_recent_other .post_recent_box{width:48%;background:#04132d;display:inline-block;margin:0 20px 10px 0;padding:15px;overflow:hidden;border-radius:5px;box-shadow:0 1px 0 rgba(255, 255, 255, 0.05), 0 3px 3px rgb(255 255 255 / 5%)}
 #post_recent_other .post_recent_box:nth-child(even){margin:0 0 10px 0}
 #post_recent_other .post_recent_box img{background:#ecf0f1;padding:0;float:left;margin:0;margin-right:13px;width:72px;border-radius:5px}
-#post_recent_other .post_recent_box h6,.post_recent_box h6 a{text-decoration:none;font-size:16px;font-weight:600;margin:0;color:#000;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
-#post_recent_other .post_recent_box:hover{background-color:#fefefe}
+#post_recent_other .post_recent_box h2, .post_recent_box h2 a{text-decoration: none; font-size: 16px; font-weight: 600; margin: 0; color: #ffffff; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;}
+#post_recent_other .post_recent_box:hover{background-color:#2563eb}
 #post_recent_other .post_recent_box p{font-size:12px;text-align:left;color:#555;line-height:normal;margin:5px 0}
 #post_recent_load{letter-spacing:-10px;text-align:center;background:transparent;height:470px}
 #post_recent_feed{padding:5px 10px 5px 0;text-align:left;margin:15px auto;    max-width: 680px;}
@@ -162,6 +162,7 @@ margin: 0 auto;}.tabs-container{display:flex;justify-content:center;background-c
 #post_recent_feed i{font-family:fontawesome;font-style:normal}
 #post_recent_feed .next:hover,#post_recent_feed .previous:hover,#post_recent_feed .home:hover{background:#fff;color:#222;box-shadow:0 10px 21px rgba(0,0,0,0.15),0 6px 6px rgba(0,0,0,0.12)}
 @media screen and (max-width:993px){#post_recent_other .post_recent_box{width:100%;margin:0 0 10px 0}}
+.section-title{font-size: 18px; font-weight: 700; color: #fff; /* margin: 24px 0 16px; */ /* line-height: 1.3; */ text-transform: capitalize; border-left: 4px solid #1d4ed8; padding-left: 12px; max-width: 680px; margin: 8px auto; margin-top: 15px;}
 </style>
   <script src="https://jsc.mgid.com/site/829703.js" async></script>
 </head>
@@ -229,7 +230,7 @@ JOIN
 </div>
  
 <div class='tab-content' id='news' style='display: none;'>
-      <iframe id='score808frame' scrolling='no' src='https://official.score808.my.id/p/highlights.html' style='width: 100%; border: none;'></iframe>
+      <iframe title='live skor' id='score808frame' scrolling='no' src='https://official.score808.my.id/p/highlights.html' style='width: 100%; border: none;'></iframe>
 <!--<div id="rss-feed-container"></div>
 <button id="load-more">Load More</button>-->
 </div>
@@ -328,7 +329,7 @@ var startfeed = 0;
 var urlblog = "https://news.score808.my.id";
 var charac = 0;
 var urlprevious, urlnext;
-function postrecentv2(e,t){for(var n=e.split("<"),r=0;r<n.length;r++)-1!=n[r].indexOf(">")&&(n[r]=n[r].substring(n[r].indexOf(">")+1,n[r].length));return n=n.join(""),n=n.substring(0,t-1)}function showpost_recent_other(e){var t,n,r,a,i,s="";urlprevious="",urlnext="";for(var l=0;l<e.feed.link.length;l++)"previous"==e.feed.link[l].rel&&(urlprevious=e.feed.link[l].href),"next"==e.feed.link[l].rel&&(urlnext=e.feed.link[l].href);for(var d=0;d<numfeed&&d!=e.feed.entry.length;d++){t=e.feed.entry[d],n=t.title.$t;for(var l=0;l<t.link.length;l++)if("alternate"==t.link[l].rel){r=t.link[l].href;break}i="content"in t?t.content.$t:"summary"in t?t.summary.$t:"",a="media$thumbnail"in t?t.media$thumbnail.url:"https://3.bp.blogspot.com/-BHuXHny1kOk/VXrkSyxKCjI/AAAAAAAACas/pZLJAEUDtds/s1600/no-image.png",s+="<div class='post_recent_box'>",s+="<a href='"+r+"'><img alt='"+n+"' src='"+a+"' title='"+n+"'/></a>",s+="<h6><a href='"+r+"'>"+n+"</a></h6>",s+="<p>"+postrecentv2(i,charac)+"</p>",s+="</div>"}document.getElementById("post_recent_other").innerHTML=s,s="",s+=urlprevious?"<a href='javascript:navigasifeed(-1);' class='previous'>❮</a>":"<span class='noactived previous'>❮</span>",s+=urlnext?"<a href='javascript:navigasifeed(1);' class='next'>❯":"<span class='noactived next'>❯</span>",s+="<a href='javascript:navigasifeed(0);' class='home'>☖</a>",document.getElementById("post_recent_feed").innerHTML=s}function navigasifeed(e){var t,n;-1==e?(t=urlprevious.indexOf("?"),n=urlprevious.substring(t)):1==e?(t=urlnext.indexOf("?"),n=urlnext.substring(t)):n="?start-index=1&max-results="+numfeed+"&orderby=published&alt=json-in-script",n+="&callback=showpost_recent_other",incluirscript(n)}function incluirscript(e){1==startfeed&&removerscript(),document.getElementById("post_recent_other").innerHTML="<div id='post_recent_load'></div>",document.getElementById("post_recent_feed").innerHTML="";var t=urlblog+"/feeds/posts/default/"+e,n=document.createElement("script");n.setAttribute("type","text/javascript"),n.setAttribute("src",t),n.setAttribute("id","postrecentlabel"),document.getElementsByTagName("head")[0].appendChild(n),startfeed=1}function removerscript(){var e=document.getElementById("postrecentlabel"),t=e.parentNode;t.removeChild(e)}onload=function(){navigasifeed(0)};
+function postrecentv2(e,t){for(var n=e.split("<"),r=0;r<n.length;r++)-1!=n[r].indexOf(">")&&(n[r]=n[r].substring(n[r].indexOf(">")+1,n[r].length));return n=n.join(""),n=n.substring(0,t-1)}function showpost_recent_other(e){var t,n,r,a,i,s="";urlprevious="",urlnext="";for(var l=0;l<e.feed.link.length;l++)"previous"==e.feed.link[l].rel&&(urlprevious=e.feed.link[l].href),"next"==e.feed.link[l].rel&&(urlnext=e.feed.link[l].href);for(var d=0;d<numfeed&&d!=e.feed.entry.length;d++){t=e.feed.entry[d],n=t.title.$t;for(var l=0;l<t.link.length;l++)if("alternate"==t.link[l].rel){r=t.link[l].href;break}i="content"in t?t.content.$t:"summary"in t?t.summary.$t:"",a="media$thumbnail"in t?t.media$thumbnail.url:"https://3.bp.blogspot.com/-BHuXHny1kOk/VXrkSyxKCjI/AAAAAAAACas/pZLJAEUDtds/s1600/no-image.png",s+="<div class='post_recent_box'>",s+="<a href='"+r+"'><img alt='"+n+"' src='"+a+"' title='"+n+"'/></a>",s+="<h2><a href='"+r+"'>"+n+"</a></h2>",s+="<p>"+postrecentv2(i,charac)+"</p>",s+="</div>"}document.getElementById("post_recent_other").innerHTML=s,s="",s+=urlprevious?"<a href='javascript:navigasifeed(-1);' class='previous'>❮</a>":"<span class='noactived previous'>❮</span>",s+=urlnext?"<a href='javascript:navigasifeed(1);' class='next'>❯":"<span class='noactived next'>❯</span>",s+="<a href='javascript:navigasifeed(0);' class='home'>☖</a>",document.getElementById("post_recent_feed").innerHTML=s}function navigasifeed(e){var t,n;-1==e?(t=urlprevious.indexOf("?"),n=urlprevious.substring(t)):1==e?(t=urlnext.indexOf("?"),n=urlnext.substring(t)):n="?start-index=1&max-results="+numfeed+"&orderby=published&alt=json-in-script",n+="&callback=showpost_recent_other",incluirscript(n)}function incluirscript(e){1==startfeed&&removerscript(),document.getElementById("post_recent_other").innerHTML="<div id='post_recent_load'></div>",document.getElementById("post_recent_feed").innerHTML="";var t=urlblog+"/feeds/posts/default/"+e,n=document.createElement("script");n.setAttribute("type","text/javascript"),n.setAttribute("src",t),n.setAttribute("id","postrecentlabel"),document.getElementsByTagName("head")[0].appendChild(n),startfeed=1}function removerscript(){var e=document.getElementById("postrecentlabel"),t=e.parentNode;t.removeChild(e)}onload=function(){navigasifeed(0)};
 //]]>
 </script>
 <script>
