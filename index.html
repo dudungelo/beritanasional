@@ -139,6 +139,79 @@ margin: 0 auto;}.tabs-container{display:flex;justify-content:center;background-c
   color: var(--card-muted);
   text-align: right;
 }
+    :root{
+  --card-bg:#ffffff;
+  --shadow:0 10px 24px rgba(0,0,0,.08);
+  --radius:16px;
+}
+
+.recent-section{
+  margin:32px 0;
+}
+
+.section-title{
+  font-size:1.4rem;
+  font-weight:800;
+  margin-bottom:18px;
+}
+
+/* GRID */
+.recent-grid{
+  display:grid;
+  grid-template-columns:repeat(1,1fr);
+  gap:18px;
+}
+
+/* CARD */
+.recent-card{
+  background:var(--card-bg);
+  border-radius:var(--radius);
+  overflow:hidden;
+  box-shadow:var(--shadow);
+  transition:.25s ease;
+}
+
+.recent-card:hover{
+  transform:translateY(-4px);
+}
+
+.recent-card a{
+  display:block;
+  color:inherit;
+  text-decoration:none;
+}
+
+.recent-card img{
+  width:100%;
+  height:190px;
+  object-fit:cover;
+  display:block;
+}
+
+/* CONTENT */
+.recent-content{
+  padding:12px 14px;
+}
+
+.recent-content h3{
+  font-size:1rem;
+  font-weight:700;
+  line-height:1.4;
+}
+
+/* RESPONSIVE */
+@media(min-width:600px){
+  .recent-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+
+@media(min-width:992px){
+  .recent-grid{
+    grid-template-columns:repeat(4,1fr);
+  }
+}
+
 </style>
 <style scoped='' type='text/css'>
 #semua,#live { max-width: 680px; margin: 0 auto; }
@@ -301,7 +374,15 @@ JOIN
   <button class='tab-button' onclick='setTab(this, &apos;live&apos;)'>LiveScore</button>
 </div>
 <!--  <h2 class="section-title">Ads Score808</h2> -->
-  
+  <section class="recent-section" aria-labelledby="jadwal-title">
+  <h2 id="jadwal-title" class="section-title">
+    Popular Match Score808 Hari Ini
+  </h2>
+
+  <div class="recent-grid" id="recent-grid">
+    <!-- item diisi via JS -->
+  </div>
+</section>
 <div class='tab-content' id='news' style='display: none;'>
       <iframe title='live skor' id='score808frame' loading='lazy' scrolling='no' src='https://official.score808.my.id/p/highlights.html' style='width: 100%; border: none;'></iframe>
 <!--<div id="rss-feed-container"></div>
@@ -313,6 +394,7 @@ JOIN
 </div>
 <div id='post_recent_feed'>
 </div>-->
+  
  <h2 class="section-title">Jadwal Score808 Hari Ini</h2>
 <div id="matchfeed"></div>
 </div>
@@ -390,6 +472,44 @@ window.addEventListener("message", function(e) {
   // Toggle content
   document.querySelectorAll('.tab-content').forEach(c => c.style.display = 'none');
   document.getElementById(tabId).style.display = 'block';
+function renderRecentGrid(json){
+  const container = document.getElementById("recent-grid");
+  if(!json?.feed?.entry) return;
+
+  container.innerHTML = json.feed.entry.slice(0,12).map(entry=>{
+    const link = entry.link.find(l=>l.rel==="alternate")?.href || "#";
+    const title = entry.title?.$t || "Jadwal Pertandingan Bola";
+
+    let img = entry["media$thumbnail"]?.url || "";
+    if(!img){
+      const html = entry.content?.$t || "";
+      const match = html.match(/<img[^>]+src="([^"]+)"/i);
+      img = match ? match[1] :
+      "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj3TPuGZN0fgyDDUg-R07INSJt6NGt-kkzHxyUiyEXq8NiF_6XB4vCbhHvg90ZtNOo5u6UldPvNGFT-9sVjGfbHjTOFHXAMc3vo9-TMIm-ilv3n6gHQoOpYc_P1gDeludDZKw2iCdsdLmCbX9FfwAvlb_tcPBEaE63YHJHKDtcDnkTBLn0bT3qhTNuJCMAv/s600/No-Image.jpg";
+    }
+
+    img = img.replace(/\/s\d+(-c)?\//,"/s600/");
+
+    return `
+      <article class="recent-card">
+        <a href="${link}" title="${title}">
+          <img src="${img}" loading="lazy" alt="Live Score ${title}">
+          <div class="recent-content">
+            <h3>${title}</h3>
+          </div>
+        </a>
+      </article>
+    `;
+  }).join("");
+}
+
+/* JSONP */
+(function(){
+  const s = document.createElement("script");
+  s.src = "https://news.score808.my.id/feeds/posts/default?alt=json-in-script&max-results=12&orderby=published&callback=renderRecentGrid";
+  s.async = true;
+  document.body.appendChild(s);
+})();
 }//]]>
 </script>
   <!-- JS -->
