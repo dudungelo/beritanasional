@@ -9,7 +9,7 @@
   <meta name="googlebot" content="index, follow">
 
   <!-- Title -->
-  <title>Score808 News | National Live Sports & Fastest Livescores</title>
+  <title>Score808 News | Fastest Livescore & National Sports Live Updates</title>
 
   <!-- Description -->
   <meta name="description" content="Score808 Live News provides national and international sports news, real-time live scores, today's match schedule, football results, and trusted football updates in Indonesia.">
@@ -28,7 +28,7 @@
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Score808 Live News">
-  <meta property="og:title" content="Score808 News | National Sports News & Fastest Live Scores">
+  <meta property="og:title" content="Score808 News | Fastest Livescore & National Sports Live Updates">
   <meta property="og:description" content="Score808 Live News provides national and international sports news, real-time live scores, today's match schedule, football results, and trusted football updates in Indonesia.">
   <meta property="og:url" content="https://www.beritanasional.eu.org/">
   <meta property="og:image" content="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiQzDGeJV6a9cf0DpcILg095NHsOgAyGtf4reFdWSe0OEqeMrENm9-PJcDVtN-MUTvSkCze1ydN8hqN8JqOly3O70zd5D7sDd_IU1s12Ffqzx3JRnsdeRcVdGJO8QJOuXPFFZ9fAjEckxBHth1zO3rfPrZ9s5mh0vO6kutS0PoVZAt6oWtrBXYkf3pDZRg/s1600/yallashoot.png">
@@ -37,7 +37,7 @@
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Score808 News | National Live Sports & Fastest Livescores">
+  <meta name="twitter:title" content="Score808 News | Fastest Livescore & National Sports Live Updates">
   <meta name="twitter:description" content="Score808 Live News provides national and international sports news, real-time live scores, today's match schedule, football results, and trusted football updates in Indonesia.">
   <meta name="twitter:image" content="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiQzDGeJV6a9cf0DpcILg095NHsOgAyGtf4reFdWSe0OEqeMrENm9-PJcDVtN-MUTvSkCze1ydN8hqN8JqOly3O70zd5D7sDd_IU1s12Ffqzx3JRnsdeRcVdGJO8QJOuXPFFZ9fAjEckxBHth1zO3rfPrZ9s5mh0vO6kutS0PoVZAt6oWtrBXYkf3pDZRg/s1600/yallashoot.png">
   <meta name="twitter:site" content="@Livescore808">
@@ -218,7 +218,7 @@ margin: 0 auto;}.tabs-container{display:flex;justify-content:center;background-c
 {
   "@context": "https://schema.org",
   "@type": "VideoObject",
-  "name": "Score808 Sports Highlights",
+  "name": "Score808 News | Fastest Livescore & National Sports Live Updates",
   "description": "Video highlight pertandingan sepak bola terbaru dan live update Score808.",
   "thumbnailUrl": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiQzDGeJV6a9cf0DpcILg095NHsOgAyGtf4reFdWSe0OEqeMrENm9-PJcDVtN-MUTvSkCze1ydN8hqN8JqOly3O70zd5D7sDd_IU1s12Ffqzx3JRnsdeRcVdGJO8QJOuXPFFZ9fAjEckxBHth1zO3rfPrZ9s5mh0vO6kutS0PoVZAt6oWtrBXYkf3pDZRg/s1600/yallashoot.png",
   "uploadDate": "2025-01-01T08:00:00+07:00",
@@ -256,7 +256,7 @@ margin: 0 auto;}.tabs-container{display:flex;justify-content:center;background-c
 </header>
   <div class="video-container">
     <div class="video-wrapper">
-    <iframe 
+    <iframe loading="lazy"
   src="https://www.youtube.com/embed/sAH4dUweCj0"
   title="YouTube video player"
   allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -297,17 +297,17 @@ JOIN
 </div></div>
 <div class='tabs-container'>
       <button class='tab-button' onclick='setTab(this, &apos;news&apos;)'>Highlights</button>
-  <button class='tab-button' onclick='setTab(this, &apos;semua&apos;)'>Live Event</button>
-  <button class='tab-button active' onclick='setTab(this, &apos;live&apos;)'>LiveScore</button>
+  <button class='tab-button active' onclick='setTab(this, &apos;semua&apos;)'>Live Event</button>
+  <button class='tab-button' onclick='setTab(this, &apos;live&apos;)'>LiveScore</button>
 </div>
 <!--  <h2 class="section-title">Ads Score808</h2> -->
   
 <div class='tab-content' id='news' style='display: none;'>
-      <iframe title='live skor' id='score808frame' scrolling='no' src='https://official.score808.my.id/p/highlights.html' style='width: 100%; border: none;'></iframe>
+      <iframe title='live skor' id='score808frame' loading='lazy' scrolling='no' src='https://official.score808.my.id/p/highlights.html' style='width: 100%; border: none;'></iframe>
 <!--<div id="rss-feed-container"></div>
 <button id="load-more">Load More</button>-->
 </div>
-<div class='tab-content' id='semua' style='display: none;'>
+<div class='tab-content' id='semua'>
   <!-- Konten Semua -->
  <!--<div id='post_recent_other'>
 </div>
@@ -316,11 +316,11 @@ JOIN
  <h2 class="section-title">Jadwal Score808 Hari Ini</h2>
 <div id="matchfeed"></div>
 </div>
-<div class='tab-content' id='live'>
+<div class='tab-content' id='live' style='display: none;'>
   <!-- Konten Live -->
  <!-- <div class='search'> <input id='searchInput' placeholder='Cari tim, liga, atau tanggal...' type='text'/></div>
 <div id="jadwal-pertandingan"></div>-->
-<iframe title='live skor' id='score808frame2' scrolling='no' src='https://official.score808.my.id/p/matchday_3.html' style='width: 100%; border: none;'></iframe>
+<iframe title='live skor' id='score808frame2' loading='lazy' scrolling='no' src='https://official.score808.my.id/p/matchday_3.html' style='width: 100%; border: none;'></iframe>
 </div>
        <h2 class="section-title">Berita Terbaru</h2>
 <!-- Recent Posts -->
