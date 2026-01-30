@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Redirect | Score808 Community</title>
+
+  <!-- SEO & Safety -->
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Style -->
+  <style>
+    :root {
+      --blue: #229ED9;
+      --red: #dc2626;
+      --red-hover: #b91c1c;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #000 url('https://s-media-cache-ak0.pinimg.com/originals/51/ed/c0/51edc046eb80046ee4755ee71d0f19ca.jpg') repeat;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      color: #fff;
+    }
+
+    .card {
+      background: #111;
+      border-radius: 16px;
+      padding: 30px 25px;
+      text-align: center;
+      width: 100%;
+      max-width: 400px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .card img {
+      width: 100px;
+      margin-bottom: 16px;
+    }
+
+    .card h2 {
+      font-size: 20px;
+      margin: 10px 0;
+      line-height: 1.4;
+    }
+
+    .card p {
+      font-size: 14px;
+      opacity: 0.85;
+      margin: 4px 0;
+    }
+
+    .card .link {
+      font-size: 12px;
+      opacity: 0.7;
+      word-break: break-all;
+      margin-top: 10px;
+    }
+
+    .spinner {
+      width: 46px;
+      height: 46px;
+      border: 5px solid rgba(255,255,255,.3);
+      border-top-color: #fff;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin: 0 auto 15px;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    button {
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+      border-radius: 50px;
+      padding: 12px 20px;
+      margin: 8px 0;
+      width: 100%;
+      max-width: 220px;
+      transition: background .3s ease;
+      font-size: 14px;
+    }
+
+    .btn-blue {
+      background: var(--blue);
+      color: #fff;
+    }
+
+    .btn-blue:hover {
+      background: #1b8cc7;
+    }
+
+    .btn-red {
+      background: var(--red);
+      color: #fff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .btn-red:hover {
+      background: var(--red-hover);
+    }
+
+    @media (max-width: 480px) {
+      .card {
+        padding: 25px 20px;
+      }
+      .card h2 {
+        font-size: 18px;
+      }
+    }
+
+    /* hide unused template elements */
+    .bg-photo-container,
+    .bg-photo-overlay,
+    .centered-top {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="card" role="main">
+    <div class="spinner" aria-hidden="true"></div>
+
+    <p>Anda akan diarahkan ke halaman tujuan dalam beberapa detik…</p>
+
+    <img 
+      src="https://blogger.googleusercontent.com/img/a/AVvXsEjZJfXm-E9cwfD3s9JLMt7Suk9THyblFSBwcU4rJgWF0xdvU__v50PcidHOoNbEo0aojkOfysvtCc1wS-lIIVisMvgslzJ1otht6zknZ88t9wZ9aUDZuLtk8WiBwgpq620wNfqLVmQF1f879ToLCpNoIfLgum9cxhJ8dsuT1oWbldou6dG6r6ZL8BrLoOg=w150-h150-p-k-no-nu"
+      alt="Score808 Logo"
+      loading="lazy"
+    >
+
+    <h2>⚽ Ngobrol Bola · Live Bola · Jadwal Siaran</h2>
+
+    <p>4.943 members · 280 online</p>
+    <p>Komunitas Diskusi Sepak Bola Indonesia</p>
+
+    <p class="link">https://t.me/score808alternative</p>
+
+    <!-- CTA Buttons -->
+    <button class="btn-blue"
+      onclick="window.location.href='https://t.me/score808alternative'">
+      JOIN TELEGRAM
+    </button>
+
+    <button class="btn-red"
+      onclick="window.location.href='https://tigoals.candil.eu.org/p/liveskor.html'">
+      ▶ OPEN WEBSITE
+    </button>
+  </main>
+
+  <!-- Safe Redirect -->
+  <script>
+    setTimeout(function () {
+      window.location.replace("https://tigoals.candil.eu.org/p/liveskor.html");
+    }, 5000);
+  </script>
+
+</body>
+</html>
